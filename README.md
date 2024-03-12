@@ -5,7 +5,7 @@ Solving Knapsack problem using metaheuristic optimization method - Simulated Ann
 #### Comming up with initial solution
 Suppose we have $n$ items to be considered. We can think of the solution to be a number with $n$-bit length. The $i$-th bit represents whether we selected
 the $i$-th item or not (1 is selected, 0 is not). With this assumption, the **initial solution** is going to be 
-anything between $0$ to $2^n - 1$
+anything from $0$ to $2^n - 1$
 
 
 #### The objective function
@@ -28,7 +28,7 @@ int objective_func(int x, int *weight, int *value) {
 
 #### Visiting next solution strategy
 Since our solution is a number represented in binary, the next solution can be acquired by taking any $i$-bit 
-between $1$ to $n$ and flip it. Let $x_0$ be our current solution and $x_1$ be the next solution. $x_1$ can be acquired 
+from $1$ to $n$ and flip it. Let $x_0$ be our current solution and $x_1$ be the next solution. $x_1$ can be acquired 
 by
 
 ```c
