@@ -10,7 +10,7 @@ anything from $0$ to $2^n - 1$
 
 #### The objective function
 In this problem, we have to maximize the total value that be can obtained subject to constraint on weight. So 
-the **objective function** is going to return the value we can obtained with a given solution (`x`) as a parameter.
+the **objective function** is going to return the value we can obtained given a solution (`x`) as a parameter.
 
 ```c
 int objective_func(int x, int *weight, int *value) {
