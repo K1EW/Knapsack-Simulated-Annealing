@@ -24,7 +24,9 @@ double my_rand() {
 }
 
 double temperature_func(int iter) {
-    return 1e7 - 2 * iter;
+    // if (iter == 0) iter = 1;
+    // return 1e5/(double)iter;
+    return 1e7 - 10*iter;
 }
 
 int search() {
@@ -39,7 +41,7 @@ int search() {
     int iter = 0;
     double T = temperature_func(iter);
 
-    while (T > 0) {
+    while (T > 1e-1) {
         int dx = my_rand() * (ITEMS - 1);
         
         int x1 = x0 ^ (1 << dx);
@@ -67,7 +69,7 @@ int search() {
     for (int i = 0; i < ITEMS; i++) {
         if (best_x & (1 << i)) printf(" %d", i + 1);
     }
-    printf("\n");
+    printf("\nNumber of iterations = %d\n", iter);
     return best;
 }
 
@@ -80,7 +82,7 @@ int main(int argc, char *argv[])
 
     double mse = 0;
     for (int i = 1; i <= iteration; i++) {
-        printf("======= %d-th iteration =======\n", i);
+        printf("======= %d-th run =======\n", i);
         int error = search() - BEST_VALUE;
         mse += error * error;
     }

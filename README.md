@@ -42,4 +42,35 @@ int x_1 = x_0 ^ (1 << dx); // Flip the corresponding bit
 ```
 
 #### Temperature function
-> **TODO**
+A temperature function can be any function that decreases as the iteration increases. The most basic one is a linear function
+that has its slope as a negative number. The temperature function is used to determine the probability of accepting a worse solution.
+
+```c
+double temperature(int iter) {
+    return 1e7 - 10*iter;
+}
+```
+
+#### Acceptance probability
+If the next solution is better than the current solution, we accept it. If it is worse, we accept it with a probability that is determined by the acceptance probability.
+The acceptance probability is calculated as
+$$
+    \text{acceptance probability} = e^{(f(x_1) - f(x_0)) / T}
+$$
+
+#### Pseudocode
+```
+x_0 = random_solution() // Generate a random solution as initial solution
+T = temperature(0) // Initial temperature
+
+for iter = 0 to MAX_ITER:
+    x_1 = next_solution(x_0) // Visit next solution
+
+    if f(x_1) > f(x_0): // If the next solution is better, accept it
+        x_0 = x_1
+    else: // If the next solution is worse, accept it with the acceptance probability
+        if my_rand() < exp((f(x_1) - f(x_0)) / T):
+            x_0 = x_1
+
+    T = temperature(iter) // Update temperature
+```
