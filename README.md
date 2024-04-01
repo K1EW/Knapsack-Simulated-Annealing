@@ -54,9 +54,8 @@ double temperature(int iter) {
 #### Acceptance probability
 If the next solution is better than the current solution, we accept it. If it is worse, we accept it with a probability that is determined by the acceptance probability.
 The acceptance probability is calculated as
-$$
-    \text{acceptance probability} = e^{(f(x_1) - f(x_0)) / T}
-$$
+
+$\text{acceptance probability} = e^{(f(x_1) - f(x_0)) / T}$
 
 #### Pseudocode
 ```
